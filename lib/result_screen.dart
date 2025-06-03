@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen({super.key, required this.chooseAnswer});
@@ -18,7 +19,9 @@ class ResultScreen extends StatelessWidget {
               Text("You answeres X out of Y questions correctly!"),
               SizedBox(height: 24),
               Text("List of answer and questions"),
-              TextButton(onPressed: (){}, child: const Text("Restart quiz again"))
+              TextButton(onPressed: (){}, child:  Text("Restart quiz again",style: GoogleFonts.roboto(
+                color: Colors.white,fontWeight: FontWeight.bold,
+              ),))
             ],
           ),
         ),
