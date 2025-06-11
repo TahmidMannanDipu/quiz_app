@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'data/questions.dart';
 
 class QuestionSummary extends StatelessWidget {
   final List<Map<String, Object>> summaryData;
@@ -12,7 +11,18 @@ class QuestionSummary extends StatelessWidget {
       children:
           summaryData.map((data) {
             final questionIndex = data['question_index'] as int;
-            return Row(children: [Text((questionIndex + 1).toString())]);
+            return Row(children: [Text((questionIndex + 1).toString()),
+            Column(
+              children: [
+                Text(data['question'] as String),
+                const SizedBox(
+                  height: 8,
+                ),
+
+                
+              ],
+            )
+            ]);
           }).toList(),
     );
   }
