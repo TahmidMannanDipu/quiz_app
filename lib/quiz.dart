@@ -13,7 +13,11 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
    List<String> selectedAnswer = [];
+
   Widget? activeScreen;
+
+
+
 
   @override
   void initState() {
@@ -21,12 +25,19 @@ class _QuizState extends State<Quiz> {
     super.initState();
   }
 
+  void restartQuiz(){
+    setState(() {
+      
+      activeScreen = StartScreen(startQuiz: switchScreen);
+    });
+  }
+
   void chooseAnswer(String answer){
     selectedAnswer.add(answer);
     if(selectedAnswer.length == questions.length){
       setState(() {
-        selectedAnswer = [];
-        activeScreen = ResultScreen(chooseAnswer: selectedAnswer,);
+
+        activeScreen = ResultScreen(chooseAnswer: selectedAnswer, onRestart: restartQuiz, );
       });
     }
   }
