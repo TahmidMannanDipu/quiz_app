@@ -4,7 +4,6 @@ import 'package:quiz/data/questions.dart';
 
 import 'package:quiz/question_summary.dart';
 
-
 class ResultScreen extends StatefulWidget {
   final List<String> chooseAnswer;
   final VoidCallback onRestart;
@@ -36,9 +35,9 @@ class _ResultScreenState extends State<ResultScreen> {
   Widget build(BuildContext context) {
     final numTotalQuestions = questions.length;
     final numCorrectAnswer =
-        summaryData.where((data) {
-          return data['user_answer'] == data['correct_answer'];
-        }).length;
+        summaryData
+            .where((data) => data['user_answer'] == data['correct_answer'])
+            .length;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 36, 148, 213),
       body: Container(
