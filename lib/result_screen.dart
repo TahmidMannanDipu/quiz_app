@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz/data/questions.dart';
-import 'package:quiz/question_screen.dart';
+
 import 'package:quiz/question_summary.dart';
-import 'package:quiz/quiz.dart';
+
 
 class ResultScreen extends StatefulWidget {
   final List<String> chooseAnswer;
   final VoidCallback onRestart;
-  const ResultScreen({super.key, required this.chooseAnswer,required this.onRestart});
-
+  const ResultScreen({
+    super.key,
+    required this.chooseAnswer,
+    required this.onRestart,
+  });
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();
 }
 
 class _ResultScreenState extends State<ResultScreen> {
-  List<Map<String, Object>> getSummaryData() {
+  List<Map<String, Object>> get summaryData {
     final List<Map<String, Object>> summary = [];
     for (var i = 0; widget.chooseAnswer.length > i; i++) {
       summary.add({
@@ -29,10 +32,8 @@ class _ResultScreenState extends State<ResultScreen> {
     return summary;
   }
 
-
   @override
   Widget build(BuildContext context) {
-    final summaryData = getSummaryData();
     final numTotalQuestions = questions.length;
     final numCorrectAnswer =
         summaryData.where((data) {
@@ -56,10 +57,10 @@ class _ResultScreenState extends State<ResultScreen> {
               ),
             ),
             SizedBox(height: 24),
-            QuestionSummary(getSummaryData()),
+            QuestionSummary(summaryData),
             TextButton.icon(
-              icon: Icon(Icons.refresh,color: Colors.white,),
-              onPressed: widget.onRestart ,
+              icon: Icon(Icons.refresh, color: Colors.white),
+              onPressed: widget.onRestart,
               label: Text(
                 "Restart quiz again",
                 style: GoogleFonts.roboto(
@@ -67,7 +68,6 @@ class _ResultScreenState extends State<ResultScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-
             ),
           ],
         ),
