@@ -44,7 +44,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 ),
               ),
               SizedBox(height: 24),
-              ...currentQuestion.getShuffeledAnswer().map((answer) {
+              ...currentQuestion.shuffeledAnswer.map((answer) {
                 return AnswerButton(
                   onPressed: () {
                     answerQuestion(answer);
